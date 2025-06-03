@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="e93509ff-206a-44b3-a923-e2dd3472918b"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕵️</text></svg>">
+    <link rel="stylesheet" href="static/styles.css">
+    <title>Impostor</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Setup Screen -->
+        <div class="setup-screen active">
+            <h1>🕵️ Impostor 🔎</h1>
+            <div class="input-group">
+                <label for="playerName">Spielername eingeben:</label>
+                <input type="text" id="playerName" placeholder="Dein Name">
+                <button onclick="addPlayer()">Spieler hinzufügen</button>
+            </div>
+            <div class="input-group">
+                <label for="categoryDropdown">Kategorien auswählen (mindestens 1):</label>
+                <div class="dropdown">
+                    <button type="button" class="dropdown-btn" onclick="toggleDropdown()">
+                        <span id="selectedCategories">Kategorien wählen...</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="gegenstände" onchange="updateSelectedCategories()">
+                            <span>💻 Gegenstände</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="tiere" onchange="updateSelectedCategories()">
+                            <span>🐮 Tiere</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="essen" onchange="updateSelectedCategories()">
+                            <span>🥙 Essen</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="orte" onchange="updateSelectedCategories()">
+                            <span>⛰️ Orte</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="berufe" onchange="updateSelectedCategories()">
+                            <span>👮‍♂️ Berufe</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="sport" onchange="updateSelectedCategories()">
+                            <span>⚽ Sport</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="promis" onchange="updateSelectedCategories()">
+                            <span>💯 Promis</span>
+                        </label>
+                        <!-- <label class="checkbox-item">
+                            <input type="checkbox" value="spicy" onchange="updateSelectedCategories()">
+                            <span>🌶️ Spicy</span>
+                        </label> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-list" id="playerList" style="display: none;">
+                <h3>Spieler:</h3>
+                <div id="players"></div>
+            </div>
+
+            <button onclick="startGame()" id="startBtn" class="start-btn" disabled>Spiel starten (min. 3 Spieler)</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div class="game-screen">
+            <h1>🎮 Spiel läuft</h1>
+            <p>Alle Spieler sind bereit. Jeder Spieler soll nacheinander seine Karte anschauen.</p>
+            <div class="progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <p id="gameInfo">Bereit zum Start</p>
+            <div id="nextPlayerInfo" class="next-player" style="margin: 1rem 0;"></div>
+            <button onclick="showNextCard()">Karte für <span id="nextPlayerName"></span> zeigen</button>
+            <button onclick="revealImpostor()" style="background: #e74c3c; margin-top: 1rem;">Impostor aufdecken</button>
+        </div>
+
+        <!-- Card Screen -->
+        <div class="card-screen">
+            <div class="card">
+                <h2 id="playerNameCard"></h2>
+                <div class="word" id="wordDisplay"></div>
+                <div class="category" id="categoryDisplay"></div>
+            </div>
+            <button onclick="nextPlayer()">Karte verstecken & weiter</button>
+        </div>
+
+        <!-- Reveal Screen -->
+        <div class="reveal-screen">
+            <h1>🎭 Auflösung</h1>
+            <div class="reveal-container">
+                <h3>Das geheime Wort war:</h3>
+                <div class="reveal-word" id="revealWord"></div>
+                <h3>Der Impostor war:</h3>
+                <div class="reveal-impostor" id="revealImpostor"></div>
+            </div>
+            <button onclick="resetGame()">Neues Spiel</button>
+        </div>
+    </div>
+    <script src="static/wordlist.js"></script>
+    <script src="static/script.js"></script>
+</body>
+</html>
