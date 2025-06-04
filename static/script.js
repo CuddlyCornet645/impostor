@@ -241,7 +241,7 @@ function revealImpostor() {
 }
 
 function resetGame() {
-    players = [];
+    updatePlayerList()
     currentPlayerIndex = 0;
     selectedWord = '';
     selectedCategories = [];
@@ -351,8 +351,8 @@ function showConfetti() {
     setTimeout(() => confetti.remove(), 3500);
 }
 
-document.addEventListener('keydown', function(e) {
-    if (e.key.toLowerCase() === 'k') {
-        showConfetti();
-    }
-});
+// document.addEventListener('keydown', function(e) {
+//     if (e.key.toLowerCase() === 'k') {
+//         showConfetti();
+//     }
+// });

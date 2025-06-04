@@ -1,17 +1,18 @@
 // Wörterlisten
 const wordLists = {
     gegenstände: [
-        'Schreibmaschine', 'Taschenrechner', 'Fernseher', 'Kaffeemaschine',
-        'Staubsauger', 'Mixer', 'Wasserkocher',
+        'Spiegelreflexkamera', 'Schreibmaschine', 'Taschenrechner', 'Fernseher', 'Kaffeemaschine',
+        'Heissklebepistole', 'Staubsauger', 'Mixer', 'Wasserkocher', 'Schneekugel',
         'Musikbox', 'Campingkocher', 'Bilderrahmen', 'Bügeleisen', 'Wecker',
-        'Aktenkoffer', 'Taschenlampe', 'Drohne', 'Thermoskanne',
+        'Aktenkoffer', 'Taschenlampe', 'Joystick', 'Drohne', 'Thermoskanne',
         'Mikroskop', 'Fernglas', 'Plattenspieler', 'Bohrmaschine', 'Schreibblock',
-        'Rasierapparat', 'Ventilator', 'Lautsprecher', 'Korkenzieher',
-        'Fahrrad', 'Regenschirm', 'Giesskanne', 'Kopfhörer',
+        'Schneidebrett', 'Rasierapparat', 'Ventilator', 'Lautsprecher', 'Korkenzieher',
+        'Fahrrad', 'Regenschirm', 'Giesskanne', 'Kopfhörer', 'Füllfederhalter',
         'Smartphone', 'Kühlschrank', 'Toaster', 'Nähmaschine', 'Schraubenzieher',
         'Teleskop', 'Pinsel', 'Rollkoffer', 'Schachbrett', 'Trommel',
-        'Thermometer', 'Wanduhr', 'Kettensäge', 'Kochlöffel',
-        'Taschenmesser', 'Kreditkarte', 'Keksdose', 'Brieföffner', 'Gitarre', 'Bunsenbrenner', 'Thek'
+        'Thermometer', 'Wanduhr', 'Kettensäge', 'Kochlöffel', 'Garderobenständer',
+        'Taschenmesser', 'Kreditkarte', 'Keksdose', 'Kleiderbügel', 'Brieföffner',
+        'Waffeleisen', 'Gitarre', 'Bunsenbrenner', 'Thek'
     ],
     tiere: [
         'Orang-Utan', 'Känguru', 'Chamäleon', 'Pfau', 'Faultier',
@@ -32,10 +33,10 @@ const wordLists = {
         'Pekingente', 'Baklava', 'Rösti',
         'Panna Cotta', 'Chili con Carne', 'Bouillabaisse', 'Sushi',
         'Gyoza', 'Moussaka', 'Tortilla', 'Samosa', 'Biryani',
-        'Risotto', 'Kaiserschmarren', 'Apfelstrudel', 'Milchreis',
+        'Risotto', 'Kaiserschmarrn', 'Apfelstrudel', 'Milchreis',
         'Pizza Margherita', 'Croissant', 'Spagetti', 'Carbonara',
-        'Fischstäbchen', 'Sachertorte', 'Cordon Bleu', 'Linsensuppe',
-        'Steak', 'Wiener Schnitzel', 'Zimtschnecke', 'Kumpir'
+        'Fischstäbchen', 'Sachertorte', 'Cordon Bleu', 'Linsensuppe', 'Kokosmakronen',
+        'Steak', 'Wiener Schnitzel', 'Baba Ganoush', 'Zimtschnecke', 'Kumpir'
     ],
     orte: [
         'Friedhof', 'Kindergarten', 'Baustelle', 'Krankenhaus', 'Kino',
