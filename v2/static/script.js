@@ -5,6 +5,8 @@ let selectedCategories = [];
 let impostorIndex = -1;
 let gameCards = [];
 let impostorIndices = [];
+updatePlayerList();
+updateSelectedCategories();
 
 function getImpostorCount() {
     return Math.max(1, Math.floor(players.length / 6) + (players.length >= 6 ? 1 : 0));
@@ -241,12 +243,13 @@ function revealImpostor() {
 }
 
 function resetGame() {
-    players = [];
     currentPlayerIndex = 0;
     selectedWord = '';
-    selectedCategories = [];
     impostorIndex = -1;
     gameCards = [];
+    updatePlayerList();
+    updateSelectedCategories();
+    update
     let impostorIndices = [];
 
     document.getElementById('playerName').value = '';
@@ -257,6 +260,7 @@ function resetGame() {
     });
     
     updatePlayerList();
+    updateSelectedCategories();
     updateImpostorCountDisplay();
     updateStartButton();
     document.querySelector('.game-screen button').style.display = 'block';
@@ -278,7 +282,10 @@ function fitRevealWord() {
   if (!word) return;
   const parent = word.parentElement;
   word.style.fontSize = '3rem'; // Startgröße
-  while (word.scrollWidth > parent.clientWidth && parseFloat(word.style.fontSize) > 0.5) {
+  word.style.whiteSpace = 'normal';
+  word.style.wordBreak = 'break-word';
+  word.style.overflowWrap = 'break-word';
+  while (word.scrollWidth > parent.clientWidth && parseFloat(word.style.fontSize) > 0.8) { // 0.8 statt 0.5
     word.style.fontSize = (parseFloat(word.style.fontSize) - 0.1) + 'rem';
   }
 }

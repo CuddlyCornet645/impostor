@@ -172,12 +172,52 @@ button:hover::after {
     color: #667eea;
 }
 
+.word-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    min-height: 120px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: move;
+}
+
 .word {
-    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-size: 2rem;
     font-weight: bold;
-    color: #2c3e50;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    text-align: center;
+    color: #333;
+    padding: 1rem;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.deckblatt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #333;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    user-select: none;
+    touch-action: none;
+    z-index: 2;
+}
+
+.deckblatt::after {
+    content: "Zieh mich nach oben oder unten";
+    color: #fff;
 }
 
 .impostor-word {

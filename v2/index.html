@@ -90,12 +90,15 @@
         <div class="card-screen">
             <div class="card">
                 <h2 id="playerNameCard"></h2>
-                <div class="word" id="wordDisplay"></div>
+                <div class="word-container" id="wordContainer">
+                    <div class="word" id="wordDisplay"></div>
+                    <div class="deckblatt" id="deckblatt"></div>
+                </div>
                 <div class="category" id="categoryDisplay"></div>
             </div>
-            <button onclick="nextPlayer()">Karte verstecken & weiter</button>
+            <button onclick="nextPlayer()" id="nextBtn">Weiter</button>
         </div>
-
+        
         <!-- Before Reveal Screen -->
         <div class="before-reveal-screen">
             <h1>🎭 Auflösung</h1>
@@ -120,6 +123,7 @@
     </div>
     <script src="static/wordlist.js"></script>
     <script src="static/script.js"></script>
+    <script src="static/mobile.js"></script>
     <footer class="footer">
     <p>Entwickelt von Jannick Tobler - Für Schüler der Sek Afi</p>
     <p>Kontakt: <a href="mailto:kleinermatick@gmail.com">kleinermatick@gmail.com</a></p>
