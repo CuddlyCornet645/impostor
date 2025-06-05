@@ -116,6 +116,8 @@ function updateStartButton() {
 
 function startGame() {
     progressBarFirstShow = true;
+    document.getElementById('progressBar').style.transition = 'none';
+    document.getElementById('progressBar').style.width = '0%';
     if (selectedCategories.length === 0) {
         alert('Bitte wähle mindestens eine Kategorie aus!');
         return;
@@ -139,7 +141,6 @@ function startGame() {
         word: impostorIndices.includes(index) ? 'IMPOSTOR' : selectedWord,
         isImpostor: impostorIndices.includes(index)
     }));
-
     currentPlayerIndex = 0;
     showScreen('game-screen');
     updateGameInfo();
@@ -149,6 +150,7 @@ function startGame() {
 }
 
 function showNextCard() {
+    updateProgress()
     if (currentPlayerIndex < gameCards.length) {
         const card = gameCards[currentPlayerIndex];
         document.getElementById('playerNameCard').textContent = card.player;
@@ -164,7 +166,6 @@ function showNextCard() {
 
 function nextPlayer() {
     currentPlayerIndex++;
-    updateProgress();
     resetDeckblatt();
     if (currentPlayerIndex < gameCards.length) {
         showScreen('game-screen');
@@ -176,6 +177,7 @@ function nextPlayer() {
         const showCardBtn = gameScreen.querySelector('button');
         if (showCardBtn) showCardBtn.style.display = 'none';
     }
+    updateProgress();
 }
 
 function showRevealScreen() {
@@ -203,20 +205,22 @@ function updateProgress() {
     const progressLabel = document.getElementById('progressLabel');
     const percent = Math.round((currentPlayerIndex / gameCards.length) * 100);
 
-    // Wenn die Progressbar gerade eingeblendet wurde (z.B. nach Reset)
-    if (progressBar.style.width === '' || progressBar.style.width === '0%') {
+    // Sofortige Positionierung ohne Animation beim ersten Mal
+    if (progressBarFirstShow) {
         progressBar.style.transition = 'none';
         progressBar.style.width = '0%';
-        requestAnimationFrame(() => {
-            progressBar.style.transition = 'width 0.5s cubic-bezier(.4,2,.6,1)';
-            progressBar.style.width = percent + '%';
-        });
-    } else {
-        // Normale Animation
+        progressBarFirstShow = false;
+    }
+    
+    // Erzwinge Layout-Neuberechnung
+    void progressBar.offsetHeight;
+    
+    // Animation im nächsten Frame starten
+    requestAnimationFrame(() => {
         progressBar.style.transition = 'width 0.5s cubic-bezier(.4,2,.6,1)';
         progressBar.style.width = percent + '%';
-    }
-
+    });
+    
     progressLabel.textContent = percent + '%';
 }
 

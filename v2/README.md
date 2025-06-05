@@ -7,3 +7,5 @@ Ein browserbasiertes Party-Spiel, inspiriert von der Impostor App.
 npm install
 npm run dev
 Das Spiel läuft dann auf http://localhost:3000
+```
+https://codepen.io/kevinpowell/pen/WbbXRPL

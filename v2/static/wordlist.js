@@ -1,92 +1,44 @@
-// Wörterlisten
 const wordLists = {
-    gegenstände: [
-        'Schreibmaschine', 'Taschenrechner', 'Fernseher', 'Kaffeemaschine',
-        'Staubsauger', 'Mixer', 'Wasserkocher',
-        'Musikbox', 'Campingkocher', 'Bilderrahmen', 'Bügeleisen', 'Wecker',
-        'Aktenkoffer', 'Taschenlampe', 'Drohne', 'Thermoskanne',
-        'Mikroskop', 'Fernglas', 'Plattenspieler', 'Bohrmaschine', 'Schreibblock',
-        'Rasierapparat', 'Ventilator', 'Lautsprecher', 'Korkenzieher',
-        'Fahrrad', 'Regenschirm', 'Giesskanne', 'Kopfhörer',
-        'Smartphone', 'Kühlschrank', 'Toaster', 'Nähmaschine', 'Schraubenzieher',
-        'Teleskop', 'Pinsel', 'Rollkoffer', 'Schachbrett', 'Trommel',
-        'Thermometer', 'Wanduhr', 'Kettensäge', 'Kochlöffel',
-        'Taschenmesser', 'Kreditkarte', 'Keksdose', 'Brieföffner', 'Gitarre', 'Bunsenbrenner', 'Thek'
+    "gegenstände": [
+        "Tastatur", "Monitor", "Smartphone", "Kopfhörer", "Lampe",
+        "Stuhl", "Tisch", "Buch", "Stift", "Uhr",
+        "Brille", "Schlüssel", "Geldbeutel", "Rucksack", "Kamera",
+        "Fernbedienung", "Kissen", "Decke", "Schuh", "Regenschirm"
     ],
-    tiere: [
-        'Orang-Utan', 'Känguru', 'Chamäleon', 'Pfau', 'Faultier',
-        'Nashorn', 'Kolibri', 'Seepferdchen', 'Gürteltier', 'Schneeleopard',
-        'Tukan', 'Oktopus', 'Axolotl', 'Leopard', 'Lama',
-        'Waschbär', 'Stachelschwein', 'Flamingo', 'Kormoran', 'Marienkäfer',
-        'Igel', 'Murmeltier', 'Möwe', 'Mäusebushard', 'Maulwurf',
-        'Eichhörnchen', 'Storch', 'Otter', 'Wolf', 'Löwe',
-        'Pinguin', 'Gepard', 'Marder', 'Ameisenbär', 'Luchs', 'Mammut', 'Manta',
-        'Kormoran', 'Maus', 'Kormoran', 'Mungo',
-        'Papagei', 'Gans', 'Schwan', 'Pfau', 'Kobra', 'Gekko', 'Marienkäfer',
-        'Python',
+    "tiere": [
+        "Hund", "Katze", "Elefant", "Giraffe", "Löwe",
+        "Tiger", "Bär", "Wolf", "Fuchs", "Hase",
+        "Pferd", "Kuh", "Schwein", "Huhn", "Ente",
+        "Pinguin", "Delfin", "Wal", "Hai", "Schlange"
     ],
-    essen: [
-        'Lasagne', 'Ratatouille', 'Currywurst', 'Käsespätzchen', 'Fondue',
-        'Tiramisu', 'Döner', 'Falafel', 'Gulasch', 'Bratkartoffeln',
-        'Paella', 'Tacos', 'Ramen','Guacamole', 'Käsesoufflé',
-        'Pekingente', 'Baklava', 'Rösti',
-        'Panna Cotta', 'Chili con Carne', 'Bouillabaisse', 'Sushi',
-        'Gyoza', 'Moussaka', 'Tortilla', 'Samosa', 'Biryani',
-        'Risotto', 'Kaiserschmarren', 'Apfelstrudel', 'Milchreis',
-        'Pizza Margherita', 'Croissant', 'Spagetti', 'Carbonara',
-        'Fischstäbchen', 'Sachertorte', 'Cordon Bleu', 'Linsensuppe',
-        'Steak', 'Wiener Schnitzel', 'Zimtschnecke', 'Kumpir'
+    "essen": [
+        "Pizza", "Burger", "Pasta", "Salat", "Sushi",
+        "Döner", "Currywurst", "Pommes", "Eis", "Kuchen",
+        "Apfel", "Banane", "Orange", "Erdbeere", "Traube",
+        "Käse", "Brot", "Wurst", "Ei", "Milch"
     ],
-    orte: [
-        'Friedhof', 'Kindergarten', 'Baustelle', 'Krankenhaus', 'Kino',
-        'Flughafen', 'Fitnessstudio', 'Gefängnis', 'Schwimmbad', 'Supermarkt',
-        'Müllhalde', 'Bücherei', 'Dachboden', 'Weinkeller', 'Friseursalon',
-        'Tierheim', 'Planetarium', 'Autowerkstatt', 'Therme', 'Waldhütte',
-        'Schloss', 'Bunker', 'Rathaus', 'Zoo', 'Vergnügungspark',
-        'Berggipfel', 'Tiefgarage', 'Bahnhof', 'Segelboot', 'Baumhaus',
-        'Museum', 'Eisdiele', 'Marktplatz', 'Raststätte', 'Wohnwagen',
-        'Kirche', 'Stadion', 'Konzerthalle', 'Bergwerk', 'Tankstelle',
-        'Hochhaus', 'Spielplatz', 'Rummelplatz', 'Gärtnerei', 'Almhütte',
-        'Messehalle', 'Gewächshaus', 'Brauerei',
-        'Bibliothek', 'Weihnachtsmarkt'
+    "orte": [
+        "Berlin", "Paris", "London", "Rom", "New York",
+        "Tokio", "Sydney", "Moskau", "Peking", "Dubai",
+        "Alpen", "Sahara", "Amazonas", "Grand Canyon", "Mount Everest",
+        "Eiffelturm", "Brandenburger Tor", "Kolosseum", "Oper Sydney", "Taj Mahal"
     ],
-    berufe: [
-        'Notarzt', 'Bestatter', 'Friseur', 'Pilot', 'Barkeeper',
-        'Architekt', 'Journalist', 'Schauspieler', 'Zahnarzt', 'Richter',
-        'Automechaniker', 'Pfleger', 'Model', 'Polizist', 'Bauarbeiter',
-        'Bäcker', 'Buchhalter', 'Fotograf', 'Wissenschaftler',
-        'Tätowierer', 'Chirurg', 'Astronaut', 'Gärtner',
-        'Müllmann', 'Imker', 'Chemiker', 'Tierarzt', 'Psychologe',
-        'Lehrer', 'Koch', 'Schreiner', 'Elektriker', 'Stewardess',
-        'Schornsteinfeger', 'Logopäde', 'Apotheker', 'Hebamme', 'Klempner',
-        'Juwelier', 'Börsenmakler', 'Grafiker', 'Dachdecker', 'Schneider', 'Dolmetscher', 
-        'Kameramann', 'Regisseur', 'Pfarrer', 'Anwalt',
-        'Billet-Kontrolleur', 'Buchhändler', 'Winzer', 'Förster', 'Informatiker'
+    "berufe": [
+        "Arzt", "Lehrer", "Polizist", "Feuerwehrmann", "Ingenieur",
+        "Programmierer", "Koch", "Kellner", "Künstler", "Musiker",
+        "Schauspieler", "Journalist", "Anwalt", "Richter", "Pilot",
+        "Astronaut", "Wissenschaftler", "Architekt", "Bauer", "Friseur"
     ],
-    sport: [
-        'Fechten', 'Rudern', 'Curling', 'Synchronschwimmen', 'Turmspringen',
-        'Eiskunstlauf', 'Boxen', 'Skispringen', 'Golf', 'Ringen',
-        'Bouldern', 'Schach', 'Triathlon', 'Motocross', 'Reitsport',
-        'Hockey', 'Volleyball', 'Baseball', 'Klettern', 'Darts',
-        'Badminton', 'Snooker', 'Kickboxen', 'Parkour', 'Segeln',
-        'Skateboarden', 'Biathlon', 'Sumoringen', 'Kitesurfen', 'Floorball',
-        'Squash', 'Rugby', 'Eishockey', 'Basketball', 'Handball',
-        'Turnen', 'Judo', 'Taekwondo', 'Speerwurf', 'Diskuswurf',
-        'Marathon', 'Bogenschiessen', 'Synchrontanzen', 'BMX', 'Tischtennis',
-        'Leichtathletik', 'Nordic Walking', 'Boccia', 'Windsurfen', 'Polo', 'Tanzen', 
-        'Softball', 'Langlauf', 'Rodeo', 'Cheerleading', 'Triathlon' 
+    "sport": [
+        "Fußball", "Basketball", "Tennis", "Golf", "Schwimmen",
+        "Laufen", "Radfahren", "Boxen", "Skifahren", "Snowboarden",
+        "Surfen", "Klettern", "Turnen", "Handball", "Volleyball",
+        "Baseball", "Rugby", "Eishockey", "Badminton", "Tischtennis"
     ],
-    promis: [
-        'Angela Merkel', 'Barack Obama', 'Taylor Swift', 'Leonardo DiCaprio', 'Oprah Winfrey',
-        'Cristiano Ronaldo', 'Greta Thunberg', 'Tom Hanks', 'Emma Watson', 'Elon Musk',
-        'Jeff Bezos', 'Beyoncé', 'Dwayne Johnson', 'Ed Sheeran', 'Shakira',
-        'Mark Zuckerberg', 'Bill Gates', 'Lady Gaga', 'Keanu Reeves', 'Rihanna',
-        'Selena Gomez', 'Kanye West', 'Jennifer Lawrence', 'Johnny Depp', 'Ariana Grande',
-        'Justin Bieber', 'Kim Kardashian', 'David Beckham', 'Stephen Hawking', 
-        'Brad Pitt', 'Heidi Klum', 'Helene Fischer', 'Klaas Heufer-Umlauf',
-        'Elton John', 'Meryl Streep', 'George Clooney', 'Mats Hummels',
-        'Sido', 'Helmut Schmidt', 'Wolfgang Schäuble', 'Mesut Özil', 'Sophia Thomalla',
-        'Robert Lewandowski', 'Herbert Grönemeyer', 'Barbara Schöneberger', 'Lena Meyer-Landrut', 'Bastian Schweinsteiger',
-        'Thomas Gottschalk', 'Jürgen Klopp', 'Til Schweiger', 'Annemarie Carpendale', 'Jan Böhmermann'
-    ],
+    "promis": [
+        "Leonardo DiCaprio", "Brad Pitt", "Angelina Jolie", "Jennifer Lawrence", "Tom Cruise",
+        "Beyoncé", "Taylor Swift", "Justin Bieber", "Rihanna", "Lady Gaga",
+        "Cristiano Ronaldo", "Lionel Messi", "LeBron James", "Roger Federer", "Serena Williams",
+        "Elon Musk", "Jeff Bezos", "Bill Gates", "Mark Zuckerberg", "Oprah Winfrey"
+    ]
 };
