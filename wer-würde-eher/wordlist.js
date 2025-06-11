@@ -22,7 +22,6 @@ window.wordLists = {
         "nie zugeben, dass sie gelogen haben?",
         "jemanden nur ausnutzen?",
         "nackt Selfies machen?",
-        "einen Flirt vorm Partner verstecken?",
         "beim Flirten lügen?",
         "etwas aus dem Hotel klauen?",
         "sich in jemanden aus der Runde verlieben?",
