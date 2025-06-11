@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+    <url>
+        <loc>https://jtobler.net</loc>
+        <lastmod>2025-06-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+
+        <image:image>
+            <image:loc>https://jtobler.net/static/images/home.png</image:loc>
+            <image:caption>Homepage-Hintergrund oder Hauptbild.</image:caption>
+            <image:title>Startseite von jtobler.net</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://jtobler.net/static/images/impostor-home.png</image:loc>
+            <image:caption>Vorschaubild für das Spiel Impostor auf der Startseite.</image:caption>
+            <image:title>Impostor Spiel Vorschau</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://jtobler.net/static/images/werwürdeeher-home.png</image:loc>
+            <image:caption>Vorschaubild für das Spiel Wer würde eher? auf der Startseite.</image:caption>
+            <image:title>Wer würde eher? Spiel Vorschau</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://jtobler.net/static/images/warheitoderpflicht-home.png</image:loc>
+            <image:caption>Vorschaubild für das Spiel Wahrheit oder Pflicht auf der Startseite.</image:caption>
+            <image:title>Wahrheit oder Pflicht Spiel Vorschau</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://jtobler.net/impostor</loc>
+        <lastmod>2025-06-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+
+        <image:image>
+            <image:loc>https://jtobler.net/static/images/impostor-start.png</image:loc>
+            <image:caption>Startbildschirm des Impostor-Spiels.</image:caption>
+            <image:title>Impostor Spiel starten</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://jtobler.net/static/images/impostor-ongoing.png</image:loc>
+            <image:caption>Screenshot vom laufenden Impostor-Spiel.</image:caption>
+            <image:title>Impostor Spiel läuft</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://jtobler.net/static/images/impostor-end.png</image:loc>
+            <image:caption>Endbildschirm des Impostor-Spiels mit Ergebnis.</image:caption>
+            <image:title>Impostor Spiel beendet</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://jtobler.net/static/images/impostor-reveal-card.png</image:loc>
+            <image:caption>Bildschirm zur Offenlegung der Impostor-Rolle.</image:caption>
+            <image:title>Impostor Rolle aufdecken</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://jtobler.net/static/images/impostor-revealed-card.png</image:loc>
+            <image:caption>Bildschirm mit aufgedeckter Impostor-Rolle.</image:caption>
+            <image:title>Impostor Rolle offenbart</image:title>
+        </image:image>
+    </url>
+
+    <url>
+        <loc>https://jtobler.net/wer-würde-eher</loc>
+        <lastmod>2025-06-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+
+        <image:image>
+            <image:loc>https://jtobler.net/static/images/werwürdeeher-start.png</image:loc>
+            <image:caption>Startbildschirm des Spiels Wer würde eher?.</image:caption>
+            <image:title>Wer würde eher? Spiel starten</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://jtobler.net/static/images/werwürdeeher-ingame-1.png</image:loc>
+            <image:caption>Screenshot des Spiels Wer würde eher? (Runde 1).</image:caption>
+            <image:title>Wer würde eher? Spielrunde 1</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://jtobler.net/static/images/werwürdeeher-ingame-2.png</image:loc>
+            <image:caption>Screenshot des Spiels Wer würde eher? (Runde 2).</image:caption>
+            <image:title>Wer würde eher? Spielrunde 2</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://jtobler.net/static/images/werwürdeeher-ingame-3.png</image:loc>
+            <image:caption>Screenshot des Spiels Wer würde eher? (Runde 3).</image:caption>
+            <image:title>Wer würde eher? Spielrunde 3</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://jtobler.net/static/images/werwürdeeher-ingame-4.png</image:loc>
+            <image:caption>Screenshot des Spiels Wer würde eher? (Runde 4).</image:caption>
+            <image:title>Wer würde eher? Spielrunde 4</image:title>
+        </image:image>
+    </url>
+
+</urlset>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow"> 
+    <title>Wer würde eher...? - Das Online Partyspiel für Freunde | Kostenlos spielen</title>
+    <meta name="description" content="Wer würde eher...? 🤔 Viele verschiedenen Kategorien! Gratis online Spielen! Auf Deutsch! Spielen mit 2+ Freunde. Kostenlos, ohne Download, auf allen Geräten. Wer würde eher online spielen!">
+    <meta property="og:title" content="Wer würde eher...? 🤔 - Online Partyspiel" />
+    <meta property="og:description" content="Wer würde eher...? 🤔 - Viele verschiedenen Kategorien! Gratis online Spielen! Auf Deutsch! Spielen mit 2+ Freunde. Kostenlos, ohne Download, auf allen Geräten. Wer würde eher online spielen!" />
+    <meta property="og:image" content="https://jtobler.net/static/images/werwürdeeher-start.png"/> 
+    <meta property="og:url" content="https://jtobler.net/wer-würde-eher/" />
+    <meta property="og:type" content="website" /> 
+    <meta property="og:locale" content="de_CH" />
+    <link rel="icon" type="image/png" href="/wer-würde-eher/icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/wer-würde-eher/icons/favicon.svg" />
+    <link rel="shortcut icon" href="/wer-würde-eher/icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/wer-würde-eher/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Wer würde eher?" />
+    <link rel="manifest" href="/wer-würde-eher/icons/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#000000"> 
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Setup Screen -->
+        <div class="setup-screen active">
+            <h1><span class="hero-title" style="font-size: 3rem; padding-bottom: 20px;"><img src="/static/emojis/thinking_face.webp" alt="Joystick Emoji"> Wer würde eher?</span></h1>
+            <div class="input-group">
+                <label for="categoryDropdown">Kategorien auswählen (mindestens 1):</label>
+                <div class="dropdown">
+                    <button type="button" class="dropdown-btn" onclick="toggleDropdown();">
+                        <span id="selectedCategories">Kategorien wählen...</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="most_likely_classic" onchange="updateSelectedCategories();umami.track('rather-classic');">
+                            <span>😊 Klassisch</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="most_likely_wild" onchange="updateSelectedCategories(); umami.track('rather-wild');">
+                            <span>🤪 Wild</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="most_likely_spicy" onchange="updateSelectedCategories(); umami.track('rather-spicy');">
+                            <span>🌶️ Spicy</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="most_likely_party" onchange="updateSelectedCategories(); umami.track('rather-party');">
+                            <span>🎉 Party</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="most_likely_friends" onchange="updateSelectedCategories(); umami.track('rather-friends');">
+                            <span>👥 Freunde</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="most_likely_drama" onchange="updateSelectedCategories(); umami.track('rather-drama');">
+                            <span>🎭 Drama</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="most_likely_dirty" onchange="updateSelectedCategories(); umami.track('rather-freizügig');">
+                            <span>🔥 Freizügig</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="player-list" id="playerList" style="display: none;">
+                <h3>Spieler:</h3>
+                <div id="players"></div>
+            </div>
+            <button onclick="startGame(); umami.track('rather-start');" id="startBtn" class="start-btn" disabled>Spiel starten (min. 2 Spieler)</button>
+        </div>
+
+        <div class="game-screen">
+            <h1><span class="hero-title" style="font-size: 3rem;"><img src="/static/emojis/thinking_face.webp" alt="Joystick Emoji"> Wer würde eher?</span></h1>
+            <div class="card">
+                <div class="question-container">
+                    <h2 style="font-style:normal;">Wer würde eher <span style="font-style:normal;" id="questionDisplay"></span></h2>
+                    <div class="category" id="categoryDisplay"></div>
+                </div>
+                <div class="button-row">
+                    <button onclick="resetGame(); umami.track('rather-reset');" id="resetBtn">Beenden</button>
+                    <button onclick="nextQuestion(); umami.track('rather-next');" id="nextQuestionBtn">Nächste Frage</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script async defer src="https://jtobler.net/static/track.js" data-website-id="e93509ff-206a-44b3-a923-e2dd3472918b"></script>
+    <script src="/wer-würde-eher/wordlist.js"></script>
+    <script src="/wer-würde-eher/script.js"></script>
+    <footer class="footer">
+        <p>Entwickelt von Jannick Tobler - Für Schüler der Sek Afi</p>
+        <p>Kontakt: <a href="mailto:kleinermatick@gmail.com" onclick="umami.track('rather-mail');">kleinermatick@gmail.com</a></p>
+    </footer>
+</body>
+</html>

@@ -3,126 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Impostor – Das Spiel" />
-    <meta property="og:description" content="🔎 Finde den geheimen Impostor! Mind. 3 Freunde gebraucht. Auf allen Geräten verfügbar. Begriffe auf Deutsch" />
-    <meta property="og:image" content="https://jtobler.net/static/image.png"/>
-    <meta property="og:url" content="https://jtobler.net/" />
-    <meta name="google-site-verification" content="YRk3quFDs6BhdMpniajJe7xOkHv7kO62jpVg-f_eOaA" />
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="e93509ff-206a-44b3-a923-e2dd3472918b"></script>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕵️</text></svg>">
-    <link rel="stylesheet" href="static/styles.css">
-    <title>Impostor - Das Spiel - Partyspiel</title>
+    <meta name="robots" content="index, follow"> 
+    <title>Spielbibliothek - Spiele, die sonst nur als App verfügbar sind!</title>
+    <meta name="description" content="Spielbibliothek - Spiele, die sonst nur als App verfügbar sind, hier als Website! Kostenlos, ohne Download, auf allen Geräten. Jetzt auf Deutsch spielen! Erstellt von Jannick. Wer würde eher...? 🤔 Viele verschiedenen Kategorien! 🔎 Spiele Impostor, das spannende Online-Partyspiel! Finde den geheimen Hochstapler unter Freunden.">
+    <meta property="og:title" content="🕹️ Spielbibliothek - Spiele, die sonst nur als App verfügbar sind!" />
+    <meta property="og:description" content="🕹️ Spielbibliothek - Spiele, die sonst nur als App verfügbar sind, hier als Website! Kostenlos, ohne Download, auf allen Geräten. Jetzt auf Deutsch spielen! Erstellt von Jannick. Wer würde eher...? 🤔 Viele verschiedenen Kategorien! 🔎 Spiele Impostor, das spannende Online-Partyspiel! Finde den geheimen Hochstapler unter Freunden." />
+    <meta property="og:image" content="https://jtobler.net/static/images/home.png"/> 
+    <meta property="og:url" content="https://jtobler.net/wer-würde-eher/" />
+    <meta property="og:type" content="website" /> 
+    <meta property="og:locale" content="de_CH" />
+    <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+    <link rel="shortcut icon" href="/icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="🕹️ Spiele" />
+    <link rel="manifest" href="/icons/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#000000"> 
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Setup Screen -->
-        <div class="setup-screen active">
-            <h1>🕵️ Impostor 🔎</h1>
-            <div class="input-group">
-                <label for="playerName">Spielername eingeben:</label>
-                <input type="text" id="playerName" placeholder="Dein Name">
-                <button onclick="addPlayer()">Spieler hinzufügen</button>
+    <div class="homepage-container">
+        <header class="hero-section">
+            <h1><img src="/static/emojis/joystick.webp" alt="Joystick Emoji">Schule Langweilig?<img src="/static/emojis/bolt.webp" alt="Joystick Emoji"></h1>
+            <!-- <p class="hero-subtitle">Jannicks Spiele</p> -->
+            <div class="hero-description">
+                <p>Darfst du nicht ans Handy?</p>
+                <p>Spiele, die sonst nur auf dem Handy sind, HIER verfügbar!</p>
             </div>
-            <div class="input-group">
-                <label for="categoryDropdown">Kategorien auswählen (mindestens 1):</label>
-                <div class="dropdown">
-                    <button type="button" class="dropdown-btn" onclick="toggleDropdown()">
-                        <span id="selectedCategories">Kategorien wählen...</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </button>
-                    <div class="dropdown-content" id="dropdownContent">
-                        <label class="checkbox-item">
-                            <input type="checkbox" value="gegenstände" onchange="updateSelectedCategories()">
-                            <span>💻 Gegenstände</span>
-                        </label>
-                        <label class="checkbox-item">
-                            <input type="checkbox" value="tiere" onchange="updateSelectedCategories()">
-                            <span>🐮 Tiere</span>
-                        </label>
-                        <label class="checkbox-item">
-                            <input type="checkbox" value="essen" onchange="updateSelectedCategories()">
-                            <span>🥙 Essen</span>
-                        </label>
-                        <label class="checkbox-item">
-                            <input type="checkbox" value="orte" onchange="updateSelectedCategories()">
-                            <span>⛰️ Orte</span>
-                        </label>
-                        <label class="checkbox-item">
-                            <input type="checkbox" value="berufe" onchange="updateSelectedCategories()">
-                            <span>👮‍♂️ Berufe</span>
-                        </label>
-                        <label class="checkbox-item">
-                            <input type="checkbox" value="sport" onchange="updateSelectedCategories()">
-                            <span>⚽ Sport</span>
-                        </label>
-                        <label class="checkbox-item">
-                            <input type="checkbox" value="promis" onchange="updateSelectedCategories()">
-                            <span>💯 Promis</span>
-                        </label>
-                        <!-- <label class="checkbox-item">
-                            <input type="checkbox" value="spicy" onchange="updateSelectedCategories()">
-                            <span>🌶️ Spicy</span>
-                        </label> -->
+        </header>
+        <main class="games-grid">
+            
+            <!-- Impostor Game Card -->
+            <div class="game-card featured" onclick="navigateToPage('impostor'); umami.track('impostor');">
+                <div class="game-image">
+                    <img class="game-icon" src="/static/emojis/detective.webp" alt="Detective Emoji">
+                    <div class="game-badge">Fertig</div>
+                </div>
+                <div class="game-content">
+                    <h3 class="game-title">Impostor</h3>
+                    <p class="game-description">
+                        Finde den geheimen Imposter!
+                    </p>
+                    <div class="game-tags">
+                        <span class="tag">3+ Spieler</span>
                     </div>
+                    <!-- <div class="game-stats">
+                        <span class="stat">⭐ 4.8/5</span>
+                        <span class="stat">👥 1.2K Spieler</span>
+                    </div> -->
+                </div>
+                <div class="play-button">
+                    <span>Spielen</span>
+                    <span class="arrow">→</span>
                 </div>
             </div>
-            <div class="player-list" id="playerList" style="display: none;">
-                <h3>Spieler:</h3>
-                <div id="players"></div>
+            
+            <!-- Wer würde eher? Game Card -->
+            <div class="game-card featured" onclick="navigateToPage('wer-würde-eher'); umami.track('wer-würde-eher');">
+                <div class="game-image">
+                    <img class="game-icon" src="/static/emojis/thinking_face.webp" alt="Thinking Face Emoji">
+                    <div class="game-badge">Fertig</div>
+                </div>
+                <div class="game-content">
+                    <h3 class="game-title">Wer würde eher...?</h3>
+                    <p class="game-description">
+                        Wer würde eher?
+                    </p>
+                    <div class="game-tags">
+                        <span class="tag">2+ Spieler</span>
+                    </div>
+                    <!-- <div class="game-stats">
+                        <span class="stat">⭐ 4.8/5</span>
+                        <span class="stat">👥 1.2K Spieler</span>
+                    </div> -->
+                </div>
+                <div class="play-button">
+                    <span>Spielen</span>
+                    <span class="arrow">→</span>
+                </div>
             </div>
-            <button onclick="startGame()" id="startBtn" class="start-btn" disabled>Spiel starten (min. 3 Spieler)</button>
-        </div>
+            
+            <!-- Placeholder Game Cards -->
+            <!-- <div class="game-card coming-soon">
+                <div class="game-image">
+                    <div class="game-icon">🤝</div>
+                    <div class="game-badge soon">In Produktion</div>
+                </div>
+                <div class="game-content">
+                    <h3 class="game-title">Wer würde eher...?</h3>
+                    <p class="game-description">
+                        Klassisches Wer würde Eher Spiel
+                    </p>
+                    <div class="game-tags">
+                        <span class="tag">2+ Spieler</span>
+                    </div>
+                </div>
+                <div class="play-button disabled">
+                    <span>Bald verfügbar</span>
+                </div>
+            </div> -->
 
-        <!-- Game Screen -->
-        <div class="game-screen">
-            <h1>🎮 Spiel läuft</h1>
-            <p>Alle Spieler sind bereit. Jeder Spieler soll nacheinander seine Karte anschauen.</p>
-            <div class="progress">
-                <div class="progress-bar" id="progressBar"></div>
+            <div class="game-card coming-soon">
+                <div class="game-image">
+                    <img class="game-icon" src="/static/emojis/masks.webp" alt="Masks Emoji">
+                    <div class="game-badge soon">In Planung</div>
+                </div>
+                <div class="game-content">
+                    <h3 class="game-title">Wahrheit oder Pflicht</h3>
+                    <p class="game-description">
+                        Klassisches Wahrheit oder Pflicht Spiel.
+                    </p>
+                    <div class="game-tags">
+                        <span class="tag">2+ Spieler</span>
+                    </div>
+                </div>
+                <div class="play-button disabled">
+                    <span>Bald in Produktion</span>
+                </div>
             </div>
-            <p id="gameInfo">Bereit zum Start</p>
-            <p><span id="impostorCountDisplay"></span></p>
-            <div id="nextPlayerInfo" class="next-player" style="margin: 1rem 0;"></div>
-            <button onclick="showNextCard()">Karte für <span id="nextPlayerName"></span> zeigen</button>
-        </div>
-
-        <!-- Card Screen -->
-        <div class="card-screen">
-            <div class="card">
-                <h2 id="playerNameCard"></h2>
-                <div class="word" id="wordDisplay"></div>
-                <div class="category" id="categoryDisplay"></div>
-            </div>
-            <button onclick="nextPlayer()">Karte verstecken & weiter</button>
-        </div>
-
-        <!-- Before Reveal Screen -->
-        <div class="before-reveal-screen">
-            <h1>🎭 Auflösung</h1>
-            <div class="reveal-container">
-                <h3>Alle Karten wurden gezeigt!</h3>
-                <h3>Spiel beendet - bereit für die Auflösung!</h3>
-            </div>
-            <button onclick="revealImpostor()" style="background: #e74c3c; margin-top: 1rem;">Impostor aufdecken</button>
-        </div>
-
-        <!-- Reveal Screen -->
-        <div class="reveal-screen">
-            <h1>🎭 Auflösung</h1>
-            <div class="reveal-container">
-                <h3>Das geheime Wort war:</h3>
-                <div class="reveal-word" id="revealWord"></div>
-                <h3>Der Impostor war:</h3>
-                <div class="reveal-impostor" id="revealImpostor"></div>
-            </div>
-            <button onclick="resetGame()">Neues Spiel</button>
-        </div>
-    </div>
-    <script src="static/wordlist.js"></script>
-    <script src="static/script.js"></script>
+        </main>
     <footer class="footer">
-    <p>Entwickelt von Jannick Tobler - Für Schüler der Sek Afi</p>
-    <p>Kontakt: <a href="mailto:kleinermatick@gmail.com">kleinermatick@gmail.com</a></p>
+        <p>Entwickelt von Jannick Tobler - Für Schüler der Sek Afi</p>
+        <p>Kontakt: <a href="mailto:kleinermatick@gmail.com" onclick="umami.track('home-mail');">kleinermatick@gmail.com</a></p>
     </footer>
+    <script async defer src="https://jtobler.net/static/track.js" data-website-id="e93509ff-206a-44b3-a923-e2dd3472918b"></script>
+    <script src="/static/homepage.js"></script>
 </body>
 </html>

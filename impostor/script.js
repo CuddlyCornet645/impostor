@@ -1,3 +1,4 @@
+let randomPlayer = '';
 let players = [];
 let currentPlayerIndex = 0;
 let selectedWord = '';
@@ -5,6 +6,10 @@ let selectedCategories = [];
 let impostorIndex = -1;
 let gameCards = [];
 let impostorIndices = [];
+let progressBarFirstShow = true;
+
+updatePlayerList();
+updateSelectedCategories();
 
 function getImpostorCount() {
     return Math.max(1, Math.floor(players.length / 6) + (players.length >= 6 ? 1 : 0));
@@ -23,9 +28,9 @@ function updateSelectedCategories() {
     selectedCategories = [];
     
     checkboxes.forEach(checkbox => {
-if (checkbox.checked) {
-    selectedCategories.push(checkbox.value);
-}
+    if (checkbox.checked) {
+        selectedCategories.push(checkbox.value);
+    }
     });
 
     const display = document.getElementById('selectedCategories');
@@ -33,14 +38,14 @@ if (checkbox.checked) {
         display.textContent = 'Kategorien wählen...';
     } else if (selectedCategories.length === 1) {
         const categoryNames = {
-            'gegenstände': '💻 Gegenstände',
-            'tiere': '🐮 Tiere', 
-            'essen': '🥙 Essen',
-            'orte': '⛰️ Orte',
-            'berufe': '👮‍♂️ Berufe',
-            'sport': '⚽ Sport',
-            'promis': '💯 Promis',
-            'spicy': '🌶️ Spicy'
+            'around_the_world': '🌍 Um die Welt',
+            'entertainment': '🎬 Unterhaltung', 
+            'dailyLife': '🏡 Alltag',
+            'animals_and_nature': '🐮 Tiere & Natur',
+            'sports_and_leisure': '⚽ Sport & Freizeit',
+            'knowledge_and_school': '👨‍🏫 Wissen & Schule',
+            'festivals_and_celebrations': '🥳 Feste & Ferien',
+            'stars_and_celebrities': '🤵‍♂️ Stars & Promis'
         };
         display.textContent = categoryNames[selectedCategories[0]];
     } else {
@@ -64,7 +69,7 @@ function addPlayer() {
         nameInput.value = '';
         updatePlayerList();
         updateStartButton();
-        updateImpostorCountDisplay(); // NEU
+        updateImpostorCountDisplay();
     }
 }
 
@@ -72,7 +77,7 @@ function removePlayer(index) {
     players.splice(index, 1);
     updatePlayerList();
     updateStartButton();
-    updateImpostorCountDisplay(); // NEU
+    updateImpostorCountDisplay();
 }
 
 function updatePlayerList() {
@@ -112,6 +117,9 @@ function updateStartButton() {
 }
 
 function startGame() {
+    progressBarFirstShow = true;
+    document.getElementById('progressBar').style.transition = 'none';
+    document.getElementById('progressBar').style.width = '0%';
     if (selectedCategories.length === 0) {
         alert('Bitte wähle mindestens eine Kategorie aus!');
         return;
@@ -135,7 +143,6 @@ function startGame() {
         word: impostorIndices.includes(index) ? 'IMPOSTOR' : selectedWord,
         isImpostor: impostorIndices.includes(index)
     }));
-
     currentPlayerIndex = 0;
     showScreen('game-screen');
     updateGameInfo();
@@ -145,6 +152,7 @@ function startGame() {
 }
 
 function showNextCard() {
+    updateProgress()
     if (currentPlayerIndex < gameCards.length) {
         const card = gameCards[currentPlayerIndex];
         document.getElementById('playerNameCard').textContent = card.player;
@@ -160,17 +168,27 @@ function showNextCard() {
 
 function nextPlayer() {
     currentPlayerIndex++;
-    updateProgress();
+    resetDeckblatt();
     if (currentPlayerIndex < gameCards.length) {
         showScreen('game-screen');
         updateGameInfo();
         updateNextPlayerInfo();
     } else {
         showScreen('before-reveal-screen');
+        if (players.length > 0) {
+            const randomIndex = Math.floor(Math.random() * players.length);
+            randomPlayer = players[randomIndex];
+            // Schreibe den Namen in das gewünschte Feld (z.B. mit id="randomPlayerDisplay")
+            const randomPlayerDisplay = document.getElementById('randomPlayerDisplay');
+            if (randomPlayerDisplay) {
+                randomPlayerDisplay.textContent = randomPlayer;
+            }
+        }
         const gameScreen = document.querySelector('.game-screen');
         const showCardBtn = gameScreen.querySelector('button');
         if (showCardBtn) showCardBtn.style.display = 'none';
     }
+    updateProgress();
 }
 
 function showRevealScreen() {
@@ -195,24 +213,39 @@ function updateNextPlayerInfo() {
 
 function updateProgress() {
     const progressBar = document.getElementById('progressBar');
-    const target = (currentPlayerIndex / gameCards.length) * 100;
-    const current = parseFloat(progressBar.style.width) || 0;
-    if (Math.abs(target - current) > 1) {
-        let step = (target - current) / 10;
-        let progress = current;
-        function animate() {
-            progress += step;
-            if ((step > 0 && progress >= target) || (step < 0 && progress <= target)) {
-                progressBar.style.width = target + '%';
-            } else {
-                progressBar.style.width = progress + '%';
-                requestAnimationFrame(animate);
-            }
-        }
-        animate();
-    } else {
-        progressBar.style.width = target + '%';
+    const progressLabel = document.getElementById('progressLabel');
+    const percent = Math.round((currentPlayerIndex / gameCards.length) * 100);
+
+    // Sofortige Positionierung ohne Animation beim ersten Mal
+    if (progressBarFirstShow) {
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0%';
+        progressBarFirstShow = false;
     }
+    
+    // Erzwinge Layout-Neuberechnung
+    void progressBar.offsetHeight;
+    
+    // Animation im nächsten Frame starten
+    requestAnimationFrame(() => {
+        progressBar.style.transition = 'width 0.5s cubic-bezier(.4,2,.6,1)';
+        progressBar.style.width = percent + '%';
+    });
+    
+    progressLabel.textContent = percent + '%';
+}
+
+function showProgressBar(targetPercent) {
+    const progressBar = document.getElementById('progressBar');
+    progressBar.style.transition = 'none'; // Übergang ausschalten
+    progressBar.style.width = '0%';        // Sofort auf 0%
+
+    // Im nächsten Frame (Browser-Rendering) aktivieren wir die Animation:
+    requestAnimationFrame(() => {
+        progressBar.style.transition = 'width 0.5s cubic-bezier(.4,2,.6,1)';
+        // Jetzt Zielwert setzen:
+        progressBar.style.width = targetPercent + '%';
+    });
 }
 
 function updateImpostorCountDisplay() {
@@ -234,29 +267,28 @@ function revealImpostor() {
     const impostorNames = impostorIndices.map(idx => players[idx]);
     document.getElementById('revealImpostor').textContent = 
         impostorNames.length === 1
-        ? `Impostor: ${impostorNames[0]}`
-        : `Impostors: ${impostorNames.join(', ')}`;
+        ? `${impostorNames[0]}`
+        : `${impostorNames.join(', ')}`;
     showScreen('reveal-screen');
     showConfetti();
 }
 
 function resetGame() {
-    updatePlayerList()
+    randomPlayer = '';
     currentPlayerIndex = 0;
     selectedWord = '';
-    selectedCategories = [];
     impostorIndex = -1;
     gameCards = [];
-    let impostorIndices = [];
+    
+    progressBarFirstShow = true;
+    updatePlayerList();
+    updateSelectedCategories();
+    impostorIndices = [];
 
     document.getElementById('playerName').value = '';
-    document.getElementById('selectedCategories').textContent = 'Kategorien wählen...';
- 
-    document.querySelectorAll('#dropdownContent input[type="checkbox"]').forEach(cb => {
-        cb.checked = false;
-    });
     
     updatePlayerList();
+    updateSelectedCategories();
     updateImpostorCountDisplay();
     updateStartButton();
     document.querySelector('.game-screen button').style.display = 'block';
@@ -278,7 +310,10 @@ function fitRevealWord() {
   if (!word) return;
   const parent = word.parentElement;
   word.style.fontSize = '3rem'; // Startgröße
-  while (word.scrollWidth > parent.clientWidth && parseFloat(word.style.fontSize) > 0.5) {
+  word.style.whiteSpace = 'normal';
+  word.style.wordBreak = 'break-word';
+  word.style.overflowWrap = 'break-word';
+  while (word.scrollWidth > parent.clientWidth && parseFloat(word.style.fontSize) > 0.8) { // 0.8 statt 0.5
     word.style.fontSize = (parseFloat(word.style.fontSize) - 0.1) + 'rem';
   }
 }
@@ -351,8 +386,8 @@ function showConfetti() {
     setTimeout(() => confetti.remove(), 3500);
 }
 
-// document.addEventListener('keydown', function(e) {
-//     if (e.key.toLowerCase() === 'k') {
-//         showConfetti();
-//     }
-// });
+document.addEventListener('keydown', function(e) {
+    if (e.key.toLowerCase() === 'k') {
+        showConfetti();
+    }
+});

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow"> 
+    <title>Impostor - Das Partyspiel für Freunde - Kostenlos spielen 🕵️</title>
+    <meta name="description" content="🕵️ Spiele Impostor, das spannende Online-Partyspiel! Finde den geheimen Hochstapler unter Freunden. Kostenlos, ohne Download, auf allen Geräten, auf Deutsch. Jetzt online spielen! Impostor online spielen!">
+    <meta property="og:title" content="Impostor - Das geheime Online Partyspiel für Freunde!" />
+    <meta property="og:description" content="🕵️ Spiele Impostor, das spannende Online-Partyspiel! Finde den geheimen Hochstapler unter Freunden. Kostenlos, ohne Download, auf allen Geräten. Jetzt auf Deutsch spielen! Impostor online spielen!" />
+    <meta property="og:image" content="https://jtobler.net/static/images/impostor-start.png"/> 
+    <meta property="og:url" content="https://jtobler.net/" />
+    <meta property="og:type" content="website" /> 
+    <meta property="og:locale" content="de_CH" />
+    <link rel="icon" type="image/png" href="/impostor/icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/impostor/icons/favicon.svg" />
+    <link rel="shortcut icon" href="/impostor/icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/impostor/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Impostor" />
+    <link rel="manifest" href="/impostor/icons/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#000000"> 
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Setup Screen -->
+        <div class="setup-screen active">
+            <h1>
+              <span class="hero-title">
+                <img src="/static/emojis/detective.webp" alt="Dtektiv Emoji"> Impostor <img src="/static/emojis/magnifying_glass.webp" alt="Lupe Emoji">
+                </span>
+            </h1>
+            <div class="input-group">
+                <label for="playerName">Spielername eingeben:</label>
+                <input type="text" id="playerName" placeholder="Dein Name">
+                <button onclick="addPlayer(); umami.track('imp-add-player');">Spieler hinzufügen</button>
+            </div>
+            <div class="input-group">
+                <label for="categoryDropdown">Kategorien auswählen (mindestens 1):</label>
+                <div class="dropdown">
+                    <button type="button" class="dropdown-btn" onclick="toggleDropdown(); umami.track('imp-dropdown');"> <span id="selectedCategories">Kategorien wählen...</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="around_the_world" onchange="updateSelectedCategories(); umami.track('imp-category-gegenstaende');"> 
+                            <span>🌍 Um die Welt</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="entertainment" onchange="updateSelectedCategories(); umami.track('imp-category-tiere');">
+                            <span>🎬 Unterhaltung</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="dailyLife" onchange="updateSelectedCategories(); umami.track('imp-category-essen');">
+                            <span>🏡 Alltag</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="animals_and_nature" onchange="updateSelectedCategories(); umami.track('imp-category-orte');">
+                            <span>🐮 Tiere & Natur</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="sports_and_leisure" onchange="updateSelectedCategories(); umami.track('imp-category-berufe');">
+                            <span>⚽ Sport & Freizeit</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="knowledge_and_school" onchange="updateSelectedCategories(); umami.track('imp-category-sport');">
+                            <span>👨‍🏫 Wissen & Schule</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="festivals_and_celebrations" onchange="updateSelectedCategories(); umami.track('imp-category-promis');">
+                            <span>🥳 Feste & Ferien</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="stars_and_celebrities" onchange="updateSelectedCategories(); umami.track('imp-category-promis');">
+                            <span>🤵‍♂️ Stars & Promis</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="player-list" id="playerList" style="display: none;">
+                <h3>Spieler:</h3>
+                <div id="players"></div>
+            </div>
+            <button onclick="startGame(); umami.track('imp-start');" id="startBtn" class="start-btn" disabled>Spiel starten (min. 3 Spieler)</button>
+        </div>
+
+        <div class="game-screen">
+            <h1><img src="/static/emojis/video_game.webp" alt="Controller Emoji"> Spiel läuft</h1>
+            <p>Alle Spieler sind bereit. Jeder Spieler soll nacheinander seine Karte anschauen.</p>
+            <div class="progress">
+                <div class="progress-bar" id="progressBar"></div>
+                <span class="progress-label" id="progressLabel">0%</span>
+            </div>
+            <p id="gameInfo">Bereit zum Start</p>
+            <p><span id="impostorCountDisplay"></span></p>
+            <div id="nextPlayerInfo" class="next-player" style="margin: 1rem 0;"></div>
+            <button onclick="showNextCard(); umami.track('imp-next-card');">Karte für <span id="nextPlayerName"></span> zeigen</button>
+        </div>
+
+        <div class="card-screen">
+            <div class="card">
+                <h2 id="playerNameCard"></h2>
+                <div class="word-container" id="wordContainer">
+                    <div class="word" id="wordDisplay"></div>
+                    <div class="deckblatt" id="deckblatt"></div>
+                </div>
+                <div class="category" id="categoryDisplay"></div>
+            </div>
+            <button onclick="nextPlayer(); umami.track('imp-next-player');" id="nextBtn" class="hidden">Weiter</button>
+        </div>
+        
+        <div class="before-reveal-screen">
+            <h1><img src="/static/emojis/masks.webp" alt="Masken Emoji"> Auflösung</h1>
+            <div class="reveal-container">
+                <h3>Alle Karten wurden gezeigt!</h3>
+                <h3><span id="randomPlayerDisplay" class="randomPlayer"></span> beginnt!</h3>
+            </div>
+            <button onclick="revealImpostor(); umami.track('rev-imp');" style="background: #e74c3c; margin-top: 1rem;">Impostor aufdecken</button>
+        </div>
+
+        <div class="reveal-screen">
+            <h1><img src="/static/emojis/masks.webp" alt="Masken Emoji"> Auflösung</h1>
+            <div class="reveal-container">
+                <h3>Das geheime Wort war:</h3>
+                <div class="reveal-word" id="revealWord"></div>
+                <h3>Der Impostor war:</h3>
+                <div class="reveal-impostor" id="revealImpostor"></div>
+            </div>
+            <button onclick="resetGame(); umami.track('imp-reset');">Neues Spiel</button>
+        </div>
+    </div>
+    <script async defer src="https://jtobler.net/static/track.js" data-website-id="e93509ff-206a-44b3-a923-e2dd3472918b"></script>
+    <script src="/impostor/wordlist.js"></script>
+    <script src="/impostor/script.js"></script>
+    <script src="/impostor/mobile.js"></script>
+    <footer class="footer">
+        <p>Entwickelt von Jannick Tobler - Für Schüler der Sek Afi</p>
+        <p>Kontakt: <a href="mailto:kleinermatick@gmail.com" onclick="umami.track('imp-mail');">kleinermatick@gmail.com</a></p>
+    </footer>
+</body>
+</html>
