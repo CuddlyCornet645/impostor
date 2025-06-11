@@ -190,6 +190,7 @@ input, select {
 button {
     background: linear-gradient(45deg, var(--color-primary-light), var(--color-primary));
     color: var(--color-text);
+    margin-bottom: 0px !important;
     font-weight: bold;
     cursor: pointer;
     transition: all var(--animation-duration) ease;
@@ -684,7 +685,7 @@ input[type="checkbox"]:checked + span,
 }
 
 .hero-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(1.5rem, 4vw, 3.5rem);
     margin-bottom: var(--spacing-sm);
     background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     -webkit-background-clip: text;
@@ -1116,63 +1117,6 @@ input[type="checkbox"]:checked + span,
     box-shadow: 0 8px 25px rgba(149, 165, 166, 0.6) !important;
 }
 
-/* Stats Screen */
-.stats-container {
-    background: var(--color-bg-card);
-    color: var(--color-text-dark);
-    padding: var(--spacing-lg);
-    border-radius: var(--border-radius-lg);
-    margin-bottom: var(--spacing-lg);
-}
-
-.stats-container h3 {
-    color: var(--color-secondary);
-    margin-bottom: var(--spacing-md);
-}
-
-.stat-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--spacing-sm);
-    margin: var(--spacing-xs) 0;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: var(--border-radius-sm);
-    border-left: 4px solid var(--color-primary);
-}
-
-.stat-name {
-    font-weight: bold;
-    font-size: var(--font-size-base);
-}
-
-.stat-count {
-    background: var(--color-primary);
-    color: var(--color-text);
-    padding: 0.3rem 0.8rem;
-    border-radius: var(--border-radius-sm);
-    font-weight: bold;
-    min-width: 40px;
-    text-align: center;
-}
-
-.stat-bar {
-    width: 100%;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-    margin-top: var(--spacing-xs);
-    overflow: hidden;
-}
-
-.stat-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--color-primary-light), var(--color-primary));
-    border-radius: 4px;
-    transition: width 0.8s var(--animation-smooth);
-    width: 0%;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     #playerButtons {
@@ -1222,4 +1166,301 @@ img {
 
 .game-screen .card {
     margin-bottom: 10px !important;
+}
+
+
+/* Truth or Dare specific styles */
+.question-screen {
+    display: none;
+}
+
+.question-screen.active {
+    display: block;
+    animation: fadeInUp 0.6s var(--animation-smooth);
+}
+
+/* Current Player Display */
+.current-player-info {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    background: var(--color-bg-card);
+    color: var(--color-text-dark);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.current-player-info h2 {
+    font-size: var(--font-size-xxl);
+    margin: 0;
+    color: var(--color-secondary);
+}
+
+.current-player {
+    font-weight: bold;
+    color: var(--color-primary);
+    text-shadow: 0 0 10px rgba(248, 58, 83, 0.3);
+    animation: glow 2s infinite alternate;
+}
+
+/* Choice Buttons */
+.choice-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.choice-btn {
+    background: var(--color-bg-card);
+    color: var(--color-text-dark);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    border: none;
+    font-size: var(--font-size-lg);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all var(--animation-duration) var(--animation-smooth);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    min-height: 150px;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.choice-btn img {
+    width: 3rem;
+    height: 3rem;
+    filter: grayscale(0);
+    transition: all var(--animation-duration) ease;
+}
+
+.choice-btn:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.truth-btn:hover {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: var(--color-text);
+    box-shadow: 0 15px 40px rgba(52, 152, 219, 0.4);
+}
+
+.dare-btn:hover {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: var(--color-text);
+    box-shadow: 0 15px 40px rgba(231, 76, 60, 0.4);
+}
+
+.choice-btn:hover img {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+
+/* Question Card */
+.question-card {
+    background: var(--color-bg-card);
+    color: var(--color-text-dark);
+    padding: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm) !important;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: var(--spacing-lg);
+    animation: cardFlip 0.6s ease-in-out;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.question-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.question-header h2 {
+    font-size: var(--font-size-xxl);
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.question-type {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-base);
+    font-weight: bold;
+    width: auto;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.question-type.truth-type {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: var(--color-text);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.question-type.dare-type {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: var(--color-text);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.question-content {
+    text-align: center;
+}
+
+.question-text {
+    font-size: var(--font-size-xl);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+    font-weight: 500;
+    color: var(--color-text-dark);
+    word-break: break-word;
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: var(--border-radius-md);
+    border-left: 4px solid var(--color-primary);
+}
+
+.question-category {
+    font-size: var(--font-size-base);
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin-top: var(--spacing-sm);
+}
+
+/* Question Controls */
+.question-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.question-controls button {
+    flex: 1;
+    min-width: 150px;
+}
+
+.next-btn {
+    background: linear-gradient(45deg, var(--color-success), #27ae60) !important;
+    color: var(--color-text) !important;
+}
+
+.next-btn:hover {
+    box-shadow: 0 8px 25px rgba(56, 211, 159, 0.6) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .choice-buttons {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .choice-btn {
+        min-height: 120px;
+        padding: var(--spacing-lg);
+    }
+    
+    .choice-btn img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .question-card {
+        padding: var(--spacing-lg);
+        min-height: 250px;
+    }
+    
+    .question-text {
+        font-size: var(--font-size-lg);
+    }
+    
+    .question-header h2 {
+        font-size: var(--font-size-xl);
+    }
+    
+    .question-controls {
+        flex-direction: column;
+    }
+    
+    .question-controls button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .current-player-info {
+        padding: var(--spacing-md);
+    }
+    
+    .current-player-info h2 {
+        font-size: var(--font-size-xl);
+    }
+    
+    .choice-btn {
+        min-height: 100px;
+        font-size: var(--font-size-base);
+    }
+    
+    .choice-btn img {
+        width: 2rem;
+        height: 2rem;
+    }
+    
+    .question-text {
+        font-size: var(--font-size-base);
+    }
+}
+
+/* Enhanced animations */
+@keyframes cardFlip {
+    0% { 
+        transform: rotateY(-90deg) scale(0.8); 
+        opacity: 0; 
+    }
+    50% { 
+        transform: rotateY(0deg) scale(1.05); 
+    }
+    100% { 
+        transform: rotateY(0deg) scale(1); 
+        opacity: 1; 
+    }
+}
+
+@keyframes glow {
+    from { 
+        text-shadow: 0 0 5px rgba(248, 58, 83, 0.3); 
+    }
+    to { 
+        text-shadow: 0 0 25px rgba(248, 58, 83, 0.8), 0 0 35px rgba(248, 58, 83, 0.6); 
+    }
+}
+
+/* Pulse animation for choice buttons */
+.choice-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.choice-btn:active::before {
+    width: 300px;
+    height: 300px;
 }

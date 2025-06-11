@@ -124,6 +124,11 @@ function startGame() {
         alert('Bitte wähle mindestens eine Kategorie aus!');
         return;
     }
+    if (players.length < 3) {
+        alert('Mindestens 3 Spieler benötigt!');
+        return;
+    }
+
     let allWords = [];
     selectedCategories.forEach(category => {
         allWords = allWords.concat(wordLists[category]);

@@ -2,7 +2,8 @@ function navigateToPage(page) {
   const routes = {
     home: '/',
     impostor: '/impostor',
-    'wer-würde-eher': '/wer-würde-eher'
+    'wer-würde-eher': '/wer-würde-eher',
+    louan: '/louan/'
   };
 
   const url = routes[page];

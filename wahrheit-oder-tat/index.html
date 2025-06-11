@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6563764075100588"
+        crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow"> 
+    <title>Wahrheit oder Tat - Das ultimative Partyspiel</title>
+    <meta name="description" content="Spiele Wahrheit oder Tat, das klassische Partyspiel! Verschiedene Kategorien, spannende Fragen und wilde Aufgaben. Kostenlos, ohne Download, auf allen Geräten. Jetzt online spielen!">
+    <meta property="og:title" content="Wahrheit oder Tat - Das ultimative Online Partyspiel!" />
+    <meta property="og:description" content="Spiele Wahrheit oder Tat online! Verschiedene Kategorien von Classic bis Hardcore. Kostenlos, ohne Download, auf allen Geräten. Jetzt auf Deutsch spielen!" />
+    <meta property="og:image" content="https://jtobler.net/static/images/wahrheit-oder-tat-start.png"/> 
+    <meta property="og:url" content="https://jtobler.net/wahrheit-oder-tat/" />
+    <meta property="og:type" content="website" /> 
+    <meta property="og:locale" content="de_CH" />
+    <link rel="icon" type="image/png" href="/wahrheit-oder-tat/icons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/wahrheit-oder-tat/icons/favicon.svg" />
+    <link rel="shortcut icon" href="/wahrheit-oder-tat/icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/wahrheit-oder-tat/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Wahrheit o. Tat" />
+    <link rel="manifest" href="/wahrheit-oder-tat/icons/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#000000"> 
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/static/styles.css">
+    <meta name="google-adsense-account" content="ca-pub-6563764075100588">
+</head>
+<body>
+    <div class="container">
+        <!-- Setup Screen -->
+        <div class="setup-screen active">
+            <h1><span class="hero-title"><img src="/static/emojis/thinking_face.webp" alt="Theater Emoji"> Wahrheit oder Tat <img src="/static/emojis/biceps.png" alt="Theater Emoji"></span></h1>
+            <div class="input-group">
+                <label for="playerName">Spielername eingeben:</label>
+                <input type="text" id="playerName" placeholder="Dein Name">
+                <button onclick="addPlayer(); umami.track('tod-add-player');">Spieler hinzufügen</button>
+            </div>
+            <div class="input-group">
+                <label for="categoryDropdown">Kategorien auswählen (mindestens 1):</label>
+                <div class="dropdown">
+                    <button type="button" class="dropdown-btn" onclick="toggleDropdown(); umami.track('tod-dropdown');"> 
+                        <span id="selectedCategories">Kategorien wählen...</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="classic" onchange="updateSelectedCategories(); umami.track('tod-category-classic');"> 
+                            <span>🎭 Classic</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="chaos" onchange="updateSelectedCategories(); umami.track('tod-category-chaos');">
+                            <span>🌪️ Chaos</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="girlsnight" onchange="updateSelectedCategories(); umami.track('tod-category-girlsnight');">
+                            <span>👭 Girls Night</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="outside" onchange="updateSelectedCategories(); umami.track('tod-category-outside');">
+                            <span>🌳 Draussen</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="dirty" onchange="updateSelectedCategories(); umami.track('tod-category-dirty');">
+                            <span>🌶️ Dirty</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="hardcore" onchange="updateSelectedCategories(); umami.track('tod-category-hardcore');">
+                            <span>💀 Hardcore</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="player-list" id="playerList" style="display: none;">
+                <h3>Spieler:</h3>
+                <div id="players"></div>
+            </div>
+            <p style="margin: 1rem;"><img src="/static/emojis/warning.svg">Der Inhaber dieser Seite übernimmt keinerlei Haftung für jegliche Schäden, sowie Bestrafungen durch den Gebrauch der Website während Arbeitszeiten.</p>
+            <button onclick="startGame(); umami.track('tod-start');" id="startBtn" class="start-btn" disabled>Spiel starten (min. 3 Spieler)</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div class="game-screen">
+            <h1><img src="/static/emojis/video_game.webp" alt="Controller Emoji"> Spiel läuft</h1>
+            
+            <div class="current-player-info">
+                <h2><span id="currentPlayerName" class="current-player"></span> ist dran!</h2>
+            </div>
+
+            <div class="choice-buttons">
+                <button class="truth-btn" onclick="selectChoice('truth'); umami.track('tod-choose-truth');">
+                    <img src="/static/emojis/thinking_face.webp" alt="Denken Emoji">
+                    <span>Wahrheit</span>
+                </button>
+                <button class="dare-btn" onclick="selectChoice('dare'); umami.track('tod-choose-dare');">
+                    <img src="/static/emojis/biceps.png" alt="Feuer Emoji">
+                    <span>Tat</span>
+                </button>
+            </div>
+
+            <div class="game-controls">
+                <button onclick="resetGame(); umami.track('tod-reset');" class="secondary-btn">Neues Spiel</button>
+            </div>
+        </div>
+
+        <!-- Question Screen -->
+        <div class="question-screen">
+            <div class="question-type" id="questionType"></div>
+            <div class="question-card">
+                <h2 id="questionPlayerName" style="font-style: bold; color: lightskyblue;"></h2>
+                <div class="question-content">
+                    <h2 class="question-container" id="questionText"></h2>
+                    <div class="question-category" id="questionCategory"></div>
+                </div>
+            </div>
+            
+            <div class="question-controls">
+                <button onclick="nextPlayer(); umami.track('tod-next-player');" class="next-btn">Nächster Spieler</button>
+            </div>
+        </div>
+    </div>
+
+    <script async defer src="https://jtobler.net/static/track.js" data-website-id="e93509ff-206a-44b3-a923-e2dd3472918b"></script>
+    <script src="/wahrheit-oder-tat/fragen.js"></script>
+    <script src="/wahrheit-oder-tat/script.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6563764075100588" crossorigin="anonymous"></script>
+    <!-- jtobler.net Ad Horizontal -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-6563764075100588"
+        data-ad-slot="6118237047"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <footer class="footer">
+        <p>Entwickelt von Jannick Tobler - Für Schüler der Sek Afi</p>
+        <p>Kontakt: <a href="mailto:kleinermatick@gmail.com" onclick="umami.track('trre-mail');">kleinermatick@gmail.com</a></p>
+    </footer>
+</body>
+</html>
