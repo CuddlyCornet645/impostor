@@ -103,7 +103,7 @@ function updateSelectedCategories() {
             'classic': '🎭 Classic',
             'chaos': '🌪️ Chaos',
             'girlsnight': '👭 Girls Night',
-            'outside': '🌳 Draußen',
+            'outside': '🌳 Draussen',
             'dirty': '🔥 Dirty',
             'hardcore': '💀 Hardcore'
         };

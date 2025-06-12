@@ -3,13 +3,13 @@ function navigateToPage(page) {
     home: '/',
     impostor: '/impostor',
     'wer-würde-eher': '/wer-würde-eher',
-    louan: '/louan/'
+    'wahrheit-oder-tat': '/wahrheit-oder-tat'
   };
 
   const url = routes[page];
 
   if (url) {
-    window.open(url, '_blank');
+    window.open(url);
   } else {
     console.error(`Unbekannte Seite: "${page}"`);
   }
