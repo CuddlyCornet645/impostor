@@ -38,6 +38,7 @@ function updateSelectedCategories() {
         display.textContent = 'Kategorien wählen...';
     } else if (selectedCategories.length === 1) {
         const categoryNames = {
+            'spicy': '🌶 Spicy',
             'around_the_world': '🌍 Um die Welt',
             'entertainment': '🎬 Unterhaltung', 
             'dailyLife': '🏡 Alltag',
