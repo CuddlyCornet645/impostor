@@ -3,7 +3,8 @@ function navigateToPage(page) {
     home: '/',
     impostor: '/impostor',
     'wer-würde-eher': '/wer-würde-eher',
-    'wahrheit-oder-tat': '/wahrheit-oder-tat'
+    'wahrheit-oder-tat': '/wahrheit-oder-tat',
+    matrix: '/matrix'
   };
 
   const url = routes[page];

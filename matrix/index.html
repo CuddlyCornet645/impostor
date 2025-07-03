@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Effect</title>
+    <link rel="stylesheet" href="/matrix/style.css">
+</head>
+<body>
+    <canvas id="matrix-canvas"></canvas>
+    <div class="controls">
+        <div class="control-panel">
+            <h3>Matrix Controls</h3>
+            <p>URL Parameters:</p>
+            <ul>
+                <li>?color=green (hex codes also work: #00ff00)</li>
+                <li>?bg=black (or hex: #000000)</li>
+                <li>?fontsize=16 (size in pixels)</li>
+                <li>?speed=50 (animation delay in ms, lower = faster)</li>
+                <li>?fade=0a (fade opacity 00-ff, higher = more fade)</li>
+                <li>?japanese=true/false (enable/disable Japanese chars)</li>
+            </ul>
+            <p>Example: ?color=green&head=white&bg=black&fontsize=18&speed=40&fade=10&japanese=true</p>
+        </div>
+    </div>
+    <script src="/matrix/script.js"></script>
+</body>
+</html>
